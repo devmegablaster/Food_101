@@ -1,6 +1,12 @@
 import streamlit as st
 import tensorflow as tf
 
+def load_image(image, image_shape=224):
+    img = tf.image.decode_image(image, channels=3)
+    img = tf.image.resize(image, size=([shape, shape]))
+    img = tf.cast(tf.expand_dims(img, axis=0), tf.int16)
+    return img
+
 @st.cache(suppress_st_warning=True)
 def predict_food(image, model):
     img = load_image(image)
@@ -39,11 +45,6 @@ if pred_button:
     st.write(pred_class_name)
 
     # Helpers --
-def load_image(image, image_shape=224):
-    img = tf.image.decode_image(image, channels=3)
-    img = tf.image.resize(image, size=([shape, shape]))
-    img = tf.cast(tf.expand_dims(img, axis=0), tf.int16)
-    return img
 
 
 
