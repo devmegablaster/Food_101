@@ -126,7 +126,7 @@ def predict_food(image, model):
     df = pd.DataFrame({"Top 5 Predictions": labels,
                        "Confidence": values,
                        'color': ['#EC5953', '#EC5953', '#EC5953', '#EC5953', '#EC5953']})
-    df = df.sort_values('F1 Scores')
+    df = df.sort_values('Confidence')
     return highest_pred, highest_prob, df
 
 st.set_page_config(page_title="Food:101",
