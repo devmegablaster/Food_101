@@ -113,7 +113,7 @@ class_names = ['apple_pie',
 @st.cache(suppress_st_warning = True)
 def predict_food(image, model):
     img = load_image(image)
-    preds = model.predict(img)
+    preds = model(img)
     highest_pred = tf.argmax(preds[0])
     highest_prob = tf.reduce_max(preds[0])
     top_5_i = sorted((preds.argsort())[0][-5:][::-1])
