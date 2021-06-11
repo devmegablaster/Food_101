@@ -112,7 +112,6 @@ class_names = ['apple_pie',
                 'tuna_tartare',
                 'waffles']
 
-@st.cache(suppress_st_warning=True)
 def predict_food(image, model):
     img = load_image(image)
     preds = model.predict(img)
