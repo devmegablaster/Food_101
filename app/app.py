@@ -1,5 +1,6 @@
 import streamlit as st
 import tensorflow as tf
+import numpy as np
 
 def load_image(image, image_shape=224):
     img = tf.image.decode_image(image, channels=3)
@@ -148,5 +149,8 @@ if pred_button:
     pred_class_name = pred_class_name.capitalize()
     pred_class_name = pred_class_name.replace("_", " ")
     st.success(f"Prediction --> {pred_class_name} ({prob * 100} % Confidence)")
+    x = np.arange(0, 5, 0.1)
+    y = np.sin(x)
+    st.pyplot(x, y)
 
     # Helpers --
