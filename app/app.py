@@ -43,7 +43,7 @@ if pred_button:
         img = tf.image.decode_image(image, channels=3)
         img = tf.image.resize(image, size=([shape, shape]))
         img = tf.cast(tf.expand_dims(img, axis=0), tf.int16)
-    r   eturn img
+        return img
 
 
 
