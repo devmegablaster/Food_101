@@ -1,3 +1,3 @@
 import streamlit as st
 
-st.write("HEY!")
+st.title("Food:101 :burger:")
