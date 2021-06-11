@@ -151,6 +151,8 @@ It can identify 101 different food classes.
 \n
 **Model :** **`EfficientNetB1`**
 \n
+**Training Duration :** **`117 minutes`**
+\n
 **Dataset :** **`Food101`**
 \n
 **Created By :** **Ojas Tyagi**
