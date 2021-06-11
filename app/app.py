@@ -141,6 +141,19 @@ As the name `Food 101` suggests, this model can predict ** 101 different food ca
 \n
 ### Try out yourself!''')
 
+st.sidebar.title("What's Food Vision ?")
+st.sidebar.write("""
+FoodVision is an end-to-end **CNN Image Classification Model** which identifies the type of food in your image. 
+It can identify 101 different food classes.
+\n
+**Accuracy :** **`86%`**
+**Model :** **`EfficientNetB1`**
+**Dataset :** **`Food101`**
+
+**Created By :** **Ojas Tyagi**
+""")
+
+
 file = st.file_uploader(label="Throw your Images here:",
                         type=["jpg", "jpeg", "png"])
 
