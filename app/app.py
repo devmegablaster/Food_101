@@ -171,6 +171,13 @@ if pred_button:
     pred_class_name = pred_class_name.replace("_", " ")
     st.success(f"Prediction --> {pred_class_name} (Confidence --> {prob * 100} % )")
     option = st.selectbox(
-    'How would you like to be contacted?',
-    ('Email', 'Home phone', 'Mobile phone'))
+    'Is the prediction correct?',
+    ('Yes', 'No))
+
+if option == "Yes":
+    st.write("Thanks for your response")
+else:
+    st.write("Its quite possible that your image is not included in the Food:101 labels...")
+    st.write("See if you can find the kind of food present in your image below...")
+    st.write(class_names)
     # Helpers --
