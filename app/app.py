@@ -5,49 +5,7 @@ def load_image(image, image_shape=224):
     img = tf.image.decode_image(image, channels=3)
     img = tf.image.resize(img, size=([image_shape, image_shape]))
     img = tf.cast(tf.expand_dims(img, axis=0), tf.int16)
-    st.write(img.shape)
     return img
-
-@st.cache(suppress_st_warning=True)
-def predict_food(image, model):
-    img = load_image(image)
-    preds = model.predict(img)
-    highest_pred = tf.argmax(preds[0])
-    return highest_pred
-
-st.set_page_config(page_title="Food:101",
-                   page_icon=":pizza:")
-
-st.title("Food:101 :hamburger:")
-st.markdown('''## Hey There! 
-\n
-Food 101 is a *Deep Learning Model* trained to predict what kind of food is present in an image
-\n
-As the name `Food 101` suggests, this model can predict ** 101 different food categories! **
-\n
-### Try out yourself!''')
-
-file = st.file_uploader(label="Throw your Images here:",
-                        type=["jpg", "jpeg", "png"])
-
-model = tf.keras.models.load_model("./models/B0_85_7.h5")
-
-if not file:
-    st.warning("Please upload an Image!")
-    st.stop()
-else:
-    image = file.read()
-    st.image(image, use_column_width=True)
-    pred_button = st.button("Predict")
-
-if pred_button:
-    pred_class_num = predict_food(image, model)
-    pred_class_name = class_names[pred_class_num]
-    st.write(pred_class_name)
-
-    # Helpers --
-
-
 
 class_names = ['apple_pie',
                 'baby_back_ribs',
@@ -150,3 +108,42 @@ class_names = ['apple_pie',
                 'tiramisu',
                 'tuna_tartare',
                 'waffles']
+
+@st.cache(suppress_st_warning=True)
+def predict_food(image, model):
+    img = load_image(image)
+    preds = model.predict(img)
+    highest_pred = tf.argmax(preds[0])
+    return highest_pred
+
+st.set_page_config(page_title="Food:101",
+                   page_icon=":pizza:")
+
+st.title("Food:101 :hamburger:")
+st.markdown('''## Hey There! 
+\n
+Food 101 is a *Deep Learning Model* trained to predict what kind of food is present in an image
+\n
+As the name `Food 101` suggests, this model can predict ** 101 different food categories! **
+\n
+### Try out yourself!''')
+
+file = st.file_uploader(label="Throw your Images here:",
+                        type=["jpg", "jpeg", "png"])
+
+model = tf.keras.models.load_model("./models/B0_85_7.h5")
+
+if not file:
+    st.warning("Please upload an Image!")
+    st.stop()
+else:
+    image = file.read()
+    st.image(image, use_column_width=True)
+    pred_button = st.button("Predict")
+
+if pred_button:
+    pred_class_num = predict_food(image, model)
+    pred_class_name = class_names[pred_class_num]
+    st.write(pred_class_name)
+
+    # Helpers --
