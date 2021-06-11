@@ -117,16 +117,7 @@ def predict_food(image, model):
     highest_pred = tf.argmax(preds[0])
     st.write(class_names[highest_pred])
     highest_prob = tf.reduce_max(preds[0])
-    top_5_i = sorted((preds.argsort())[0][-5:][::-1])
-    values = preds[0][top_5_i] * 100
-    labels = []
-    for x in range(5):
-        labels.append(class_names[top_5_i[x]])
-    df = pd.DataFrame({"Top 5 Predictions": labels,
-                       "Confidence": values,
-                       'color': ['#EC5953', '#EC5953', '#EC5953', '#EC5953', '#EC5953']})
-    df = df.sort_values('Confidence')
-    return highest_pred, highest_prob, df
+    return highest_pred, highest_prob
 
 st.set_page_config(page_title="Food:101",
                    page_icon=":pizza:")
@@ -177,12 +168,5 @@ if pred_button:
     pred_class_name = pred_class_name.capitalize()
     pred_class_name = pred_class_name.replace("_", " ")
     st.success(f"Prediction --> {pred_class_name} ({prob * 100} % Confidence)")
-    st.write('## Top 5 Predictions -->')
-    st.write(alt.Chart(df).mark_bar().encode(
-        x='Confidence',
-        y=alt.X('Top 5 Predictions', sort=None),
-        color=alt.Color("color", scale=None),
-        text='Confidence'
-    ).properties(width=600, height=400))
 
     # Helpers --
