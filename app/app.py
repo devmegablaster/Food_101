@@ -116,6 +116,7 @@ def predict_food(image, model):
     preds = model(img)
     highest_pred = tf.argmax(preds[0])
     highest_prob = tf.reduce_max(preds[0])
+    st.write(preds[0])
     return highest_pred, highest_prob
 
 st.set_page_config(page_title="Food:101",
