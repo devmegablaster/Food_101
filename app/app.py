@@ -116,15 +116,6 @@ def predict_food(image, model):
     preds = model(img)
     highest_pred = tf.argmax(preds[0])
     highest_prob = tf.reduce_max(preds[0])
-    top_5_i = sorted((preds.argsort())[0][-5:][::-1])
-    values = preds[0][top_5_i] * 100
-    labels = []
-    for x in range(5):
-        labels.append(class_names[top_5_i[x]])
-    df = pd.DataFrame({"Top 5 Predictions": labels,
-                       "F1 Scores": values,
-                       'color': ['#EC5953', '#EC5953', '#EC5953', '#EC5953', '#EC5953']})
-    df = df.sort_values('F1 Scores')
     return highest_pred, highest_prob
 
 st.set_page_config(page_title="Food:101",
