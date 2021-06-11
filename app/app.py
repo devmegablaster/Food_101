@@ -114,7 +114,8 @@ def predict_food(image, model):
     img = load_image(image)
     preds = model.predict(img)
     highest_pred = tf.argmax(preds[0])
-    return highest_pred
+    higest_prob = tf.reduce_max(preds[0])
+    return highest_pred, highest_prob
 
 st.set_page_config(page_title="Food:101",
                    page_icon=":pizza:")
@@ -142,8 +143,8 @@ else:
     pred_button = st.button("Predict")
 
 if pred_button:
-    pred_class_num = predict_food(image, model)
+    pred_class_num, prob = predict_food(image, model)
     pred_class_name = class_names[pred_class_num]
-    st.write(pred_class_name)
+    st.success(f"Prediction --> {pred_class_name} ({prob}% Confidence)")
 
     # Helpers --
