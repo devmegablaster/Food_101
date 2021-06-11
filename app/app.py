@@ -172,7 +172,7 @@ if pred_button:
     st.success(f"Prediction --> {pred_class_name} (Confidence --> {prob * 100} % )")
     option = st.selectbox(
     'Is the prediction correct?',
-    ('Yes', 'No))
+    ('Yes', 'No)))
 
 if option == "Yes":
     st.write("Thanks for your response")
