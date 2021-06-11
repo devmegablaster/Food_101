@@ -124,7 +124,7 @@ def predict_food(image, model):
     for x in range(5):
         labels.append(class_names[top_5_i[x]])
     df = pd.DataFrame({"Top 5 Predictions": labels,
-                       "F1 Scores": values,
+                       "Confidence": values,
                        'color': ['#EC5953', '#EC5953', '#EC5953', '#EC5953', '#EC5953']})
     df = df.sort_values('F1 Scores')
     return highest_pred, highest_prob, df
@@ -162,7 +162,7 @@ if pred_button:
     st.success(f"Prediction --> {pred_class_name} ({prob * 100} % Confidence)")
     st.write('## Top 5 Predictions -->')
     st.write(alt.Chart(df).mark_bar().encode(
-        x='F1 Scores',
+        x='Confidence',
         y=alt.X('Top 5 Predictions', sort=None),
         color=alt.Color("color", scale=None),
         text='Confidence'
