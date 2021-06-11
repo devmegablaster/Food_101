@@ -115,7 +115,6 @@ def predict_food(image, model):
     img = load_image(image)
     preds = model(img)
     highest_pred = tf.argmax(preds[0])
-    st.write(class_names[highest_pred])
     highest_prob = tf.reduce_max(preds[0])
     return highest_pred, highest_prob
 
@@ -163,7 +162,7 @@ else:
     pred_button = st.button("Predict")
 
 if pred_button:
-    pred_class_num, prob, df = predict_food(image, model)
+    pred_class_num, prob = predict_food(image, model)
     pred_class_name = class_names[pred_class_num]
     pred_class_name = pred_class_name.capitalize()
     pred_class_name = pred_class_name.replace("_", " ")
