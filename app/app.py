@@ -1,6 +1,8 @@
 import streamlit as st
 import tensorflow as tf
 import numpy as np
+import pandas as pd
+import altair as alt
 
 def load_image(image, image_shape=224):
     img = tf.image.decode_image(image, channels=3)
@@ -116,7 +118,16 @@ def predict_food(image, model):
     preds = model.predict(img)
     highest_pred = tf.argmax(preds[0])
     highest_prob = tf.reduce_max(preds[0])
-    return highest_pred, highest_prob
+    top_5_i = sorted((preds.argsort())[0][-5:][::-1])
+    values = preds[0][top_5_i] * 100
+    labels = []
+    for x in range(5):
+        labels.append(class_names[top_5_i[x]])
+    df = pd.DataFrame({"Top 5 Predictions": labels,
+                       "F1 Scores": values,
+                       'color': ['#EC5953', '#EC5953', '#EC5953', '#EC5953', '#EC5953']})
+    df = df.sort_values('F1 Scores')
+    return highest_pred, highest_prob, df
 
 st.set_page_config(page_title="Food:101",
                    page_icon=":pizza:")
@@ -144,13 +155,16 @@ else:
     pred_button = st.button("Predict")
 
 if pred_button:
-    pred_class_num, prob = predict_food(image, model)
+    pred_class_num, prob, df = predict_food(image, model)
     pred_class_name = class_names[pred_class_num]
     pred_class_name = pred_class_name.capitalize()
     pred_class_name = pred_class_name.replace("_", " ")
     st.success(f"Prediction --> {pred_class_name} ({prob * 100} % Confidence)")
-    x = np.arange(0, 5, 0.1)
-    y = np.sin(x)
-    st.pyplot(x, y)
+    st.write(alt.Chart(df).mark_bar().encode(
+        x='F1 Scores',
+        y=alt.X('Top 5 Predictions', sort=None),
+        color=alt.Color("color", scale=None),
+        text='F1 Scores'
+    ).properties(width=600, height=400))
 
     # Helpers --
