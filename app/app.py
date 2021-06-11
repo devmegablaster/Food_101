@@ -3,7 +3,7 @@ import tensorflow as tf
 
 def load_image(image, image_shape=224):
     img = tf.image.decode_image(image, channels=3)
-    img = tf.image.resize(image, size=([image_shape, image_shape]))
+    img = tf.image.resize(img, size=([image_shape, image_shape]))
     img = tf.cast(tf.expand_dims(img, axis=0), tf.int16)
     st.write(img.shape)
     return img
