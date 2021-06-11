@@ -17,7 +17,7 @@ file = st.file_uploader(label="Throw your Images here:",
 
 if not file:
     st.warning("Please upload an Image!")
-    sr.stop()
+    st.stop()
 else:
     image = file.read()
     st.image(image, use_column_width=True)
