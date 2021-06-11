@@ -170,5 +170,7 @@ if pred_button:
     pred_class_name = pred_class_name.capitalize()
     pred_class_name = pred_class_name.replace("_", " ")
     st.success(f"Prediction --> {pred_class_name} (Confidence --> {prob * 100} % )")
-
+    option = st.selectbox(
+    'How would you like to be contacted?',
+    ('Email', 'Home phone', 'Mobile phone'))
     # Helpers --
