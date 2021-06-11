@@ -130,6 +130,8 @@ As the name `Food 101` suggests, this model can predict ** 101 different food ca
 \n
 ### Try out yourself!''')
 
+st.write(class_names)
+
 st.sidebar.title("What's Food Vision ?")
 st.sidebar.write("""
 FoodVision is an end-to-end **Convolutional Neural Network Image Classification Model** which identifies the type of food in your image. 
