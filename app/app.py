@@ -160,11 +160,12 @@ if pred_button:
     pred_class_name = pred_class_name.capitalize()
     pred_class_name = pred_class_name.replace("_", " ")
     st.success(f"Prediction --> {pred_class_name} ({prob * 100} % Confidence)")
+    st.write('## Top 5 Predictions -->')
     st.write(alt.Chart(df).mark_bar().encode(
         x='F1 Scores',
         y=alt.X('Top 5 Predictions', sort=None),
         color=alt.Color("color", scale=None),
-        text='F1 Scores'
+        text='Confidence'
     ).properties(width=600, height=400))
 
     # Helpers --
