@@ -11,3 +11,6 @@ Food 101 is a *Deep Learning Model* trained to predict what kind of food is pres
 As the name `Food 101` suggests, this model can predict ** 101 different food categories! **
 \n
 ### Try out yourself!''')
+
+file = st.file_uploader(label="Throw your Images here:",
+                        type=["jpg", "jpeg", "png"])
