@@ -1,5 +1,8 @@
 import streamlit as st
 
+st.set_page_config(page_title="Food:101",
+                   page_icon=":pizza:")
+
 st.title("Food:101 :hamburger:")
 st.markdown('''## Hey There! 
 \n
