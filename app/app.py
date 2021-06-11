@@ -145,6 +145,8 @@ else:
 if pred_button:
     pred_class_num, prob = predict_food(image, model)
     pred_class_name = class_names[pred_class_num]
-    st.success(f"Prediction --> {pred_class_name} ({prob} % Confidence)")
+    pred_class_name = pred_class_name.capitalize()
+    pred_class_name = pred_class_name.replace("_", " ")
+    st.success(f"Prediction --> {pred_class_name} ({prob * 100} % Confidence)")
 
     # Helpers --
