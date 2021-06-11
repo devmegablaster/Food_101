@@ -39,15 +39,15 @@ if pred_button:
     st.write(pred_class_name)
 
     # Helpers --
-    def load_image(image, image_shape=224):
-        img = tf.image.decode_image(image, channels=3)
-        img = tf.image.resize(image, size=([shape, shape]))
-        img = tf.cast(tf.expand_dims(img, axis=0), tf.int16)
-        return img
+def load_image(image, image_shape=224):
+    img = tf.image.decode_image(image, channels=3)
+    img = tf.image.resize(image, size=([shape, shape]))
+    img = tf.cast(tf.expand_dims(img, axis=0), tf.int16)
+    return img
 
 
 
-    class_names = ['apple_pie',
+class_names = ['apple_pie',
                 'baby_back_ribs',
                 'baklava',
                 'beef_carpaccio',
