@@ -115,6 +115,7 @@ def predict_food(image, model):
     img = load_image(image)
     preds = model(img)
     highest_pred = tf.argmax(preds[0])
+    st.write(class_names[highest_pred])
     highest_prob = tf.reduce_max(preds[0])
     top_5_i = sorted((preds.argsort())[0][-5:][::-1])
     values = preds[0][top_5_i] * 100
