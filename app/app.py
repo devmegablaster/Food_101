@@ -128,9 +128,10 @@ Food 101 is a *Deep Learning Model* trained to predict what kind of food is pres
 \n
 As the name `Food 101` suggests, this model can predict ** 101 different food categories! **
 \n
-### Try out yourself!''')
+### Try out yourself!
+\n
 
-st.write(class_names[0:100])
+''')
 
 st.sidebar.title("What's Food Vision ?")
 st.sidebar.write("""
