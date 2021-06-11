@@ -169,6 +169,6 @@ if pred_button:
     pred_class_name = class_names[pred_class_num]
     pred_class_name = pred_class_name.capitalize()
     pred_class_name = pred_class_name.replace("_", " ")
-    st.success(f"Prediction --> {pred_class_name} ({prob * 100} % Confidence)")
+    st.success(f"Prediction --> {pred_class_name} (Confidence --> {prob * 100} % )")
 
     # Helpers --
