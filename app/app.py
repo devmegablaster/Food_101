@@ -23,7 +23,7 @@ As the name `Food 101` suggests, this model can predict ** 101 different food ca
 file = st.file_uploader(label="Throw your Images here:",
                         type=["jpg", "jpeg", "png"])
 
-model = tf.keras.models.load_model("../models/B0_85_7.h5")
+model = tf.keras.models.load_model("./models/B0_85_7.h5")
 
 if not file:
     st.warning("Please upload an Image!")
