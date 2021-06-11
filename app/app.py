@@ -130,7 +130,7 @@ As the name `Food 101` suggests, this model can predict ** 101 different food ca
 \n
 ### Try out yourself!''')
 
-st.write(class_names)
+st.write(class_names[0:100])
 
 st.sidebar.title("What's Food Vision ?")
 st.sidebar.write("""
