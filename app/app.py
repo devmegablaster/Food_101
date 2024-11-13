@@ -1,7 +1,5 @@
 import streamlit as st
 import tensorflow as tf
-import pandas as pd
-import altair as alt
 
 def load_image(image, image_shape=224):
     img = tf.image.decode_image(image, channels=3)
